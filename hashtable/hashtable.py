@@ -112,6 +112,8 @@ class HashTable:
             self.storage[index] = HashTableEntry(key, value)
         self.num_items +=1
         self.load_factor = self.num_items / self.capacity
+        if self.load_factor > 0.7:
+            self.resize(self.capacity * 2)
         
 
 
