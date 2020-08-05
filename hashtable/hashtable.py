@@ -96,20 +96,12 @@ class HashTable:
         """
         # Your code here
         index = self.hash_index(key)
-        if self.storage[index] is not None:
-            current = self.storage[index]
-            while current is not None:
-                if current.key == key:
-                    current.value = value
-                    return
-                else:
-                    if current.next is not None:
-                        current = current.next
-                    else:
-                         current.next = HashTableEntry(key, value)
-                         break
-        else:
-            self.storage[index] = HashTableEntry(key, value)
+        current = index
+        while self.storage[current] is not None:
+            if self.storage[current].key == key:
+                self.storage[current].value = value
+                return
+        self.storage[current] = HashTableEntry(key, value)
         self.num_items +=1
         self.load_factor = self.num_items / self.capacity
         if self.load_factor > 0.7:
