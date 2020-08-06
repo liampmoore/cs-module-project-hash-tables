@@ -1,5 +1,27 @@
 def word_count(s):
     # Your code here
+    table = {}
+    current = ''
+    for i, c in enumerate(s.lower()):
+        if c >= 'a' and c <= 'z' or c == "'":
+            current = current + c
+        else:
+            if current != '':
+                if current not in table:
+                    table[current] = 1
+                    current = ''
+                else:
+                    table[current] += 1
+                    current = ''
+    if current != '':
+                if current not in table:
+                    table[current] = 1
+                    current = ''
+                else:
+                    table[current] += 1
+                    current = ''
+    return table      
+
 
 
 
